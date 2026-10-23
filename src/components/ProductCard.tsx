@@ -66,14 +66,14 @@ export function ProductCard({ product }: { product: Product }) {
           <div className="mt-3 flex items-center gap-2">
             <Link
               to={`/product/${product.slug}`}
-              className="inline-flex flex-1 items-center justify-center rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-brand-500 hover:text-brand-700"
+              className="min-w-0 inline-flex flex-1 items-center justify-center rounded-lg border border-slate-200 px-2 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-brand-500 hover:text-brand-700"
             >
               Подробнее
             </Link>
             <KaspiButton
               href={product.kaspiUrl}
               label="Kaspi"
-              className="flex-1 px-3 py-2"
+              className="shrink-0 px-3 py-2"
             />
           </div>
         </div>

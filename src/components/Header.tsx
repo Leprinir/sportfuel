@@ -141,10 +141,10 @@ export function Header() {
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
-          className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition-colors hover:bg-slate-100 lg:hidden"
+          className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 lg:hidden"
           aria-label="Открыть меню"
         >
-          <Menu className="h-6 w-6" aria-hidden="true" />
+          <Menu className="h-5 w-5" aria-hidden="true" />
         </button>
       </div>
 
