@@ -137,7 +137,7 @@ export function ProductCatalog({ scopeCategoryId }: Props) {
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 overflow-hidden">
             <button
               type="button"
               onClick={() => setMobileFiltersOpen(true)}

@@ -113,9 +113,20 @@ async function main() {
   {
     const page = await newPage(browser, 1280, 900);
     await goto(page, '/catalog');
-    await page.select('#sort', 'price-asc');
-    const value = await page.$eval('#sort', (el) => el.value);
-    record('Сортировка по возрастанию цены', value === 'price-asc', `value=${value}`);
+    // Кастомный дропдаун: кликаем кнопку сортировки, затем опцию
+    const sortBtn = await page.$('button[aria-haspopup="listbox"]');
+    if (!sortBtn) throw new Error('Sort button not found');
+    await sortBtn.click();
+    await new Promise((r) => setTimeout(r, 300));
+    const option = await page.evaluate(() => {
+      const btns = [...document.querySelectorAll('button[role="option"]')];
+      const target = btns.find((b) => b.textContent.includes('Сначала дешевле'));
+      if (target) { target.click(); return true; }
+      return false;
+    });
+    if (!option) throw new Error('Sort option not found');
+    await new Promise((r) => setTimeout(r, 200));
+    record('Сортировка по возрастанию цены', option, 'custom dropdown clicked');
     await page.close();
   }
 
